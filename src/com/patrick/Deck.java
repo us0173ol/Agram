@@ -20,22 +20,14 @@ public class Deck {
 
         for (Card.Suit suit : Card.Suit.values()) {
 
-            for (int v = 1; v <= 13; v++) {
+            for (int v = 1; v <= 10; v++) {//This used to iterate to 13.
                 if (v == 1) {
                     Card c = new Card(v, suit, Card.ACE);
                     cards.add(c);
-                } else if (v > 1 && v <= 10) {
-                    Card c = new Card(v, suit, Card.NOT_FACE_NOT_ACE);
+                }else {Card c = new Card(v, suit, Card.NOT_ACE);
                     cards.add(c);
-                } else if (v == 11) {
-                    Card c = new Card(10, suit, Card.JACK);
-                    cards.add(c);
-                } else if (v == 12) {
-                    Card c = new Card(10, suit, Card.QUEEN);
-                    cards.add(c);
-                } else if (v == 13) {
-                    Card c = new Card(10, suit, Card.KING);
-                    cards.add(c);
+                //I removed the face cards.
+
                 }
             }
         }

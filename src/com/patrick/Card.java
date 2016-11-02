@@ -5,7 +5,7 @@ public class Card {
     int value;
     String specialTypeOfCard;
 //Agram doesn't use the Ace of Spades or any face cards.
-   // public final static String NOT_FACE_NOT_ACE = "not a face card";
+    public final static String NOT_ACE = "not a face card";
     public final static String ACE = "ace";
     /*public final static String JACK = "jack";
     public final static String QUEEN = "queen";
