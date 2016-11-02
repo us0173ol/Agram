@@ -4,13 +4,13 @@ public class Card {
     Suit suit;
     int value;
     String specialTypeOfCard;
-
-    public final static String NOT_FACE_NOT_ACE = "not a face card";
+//Agram doesn't use the Ace of Spades or any face cards.
+   // public final static String NOT_FACE_NOT_ACE = "not a face card";
     public final static String ACE = "ace";
-    public final static String JACK = "jack";
+    /*public final static String JACK = "jack";
     public final static String QUEEN = "queen";
     public final static String KING = "king";
-
+*/
 
     public enum Suit {
         HEARTS("h"), SPADES("s"), CLUBS("c"), DIAMONDS("d");
@@ -35,7 +35,7 @@ public class Card {
     public Card(int v, Suit s) {
         this.value = v;
         this.suit = s;
-        this.specialTypeOfCard = NOT_FACE_NOT_ACE;
+        //this.specialTypeOfCard = NOT_FACE_NOT_ACE;
 
     }
 
@@ -69,19 +69,17 @@ public class Card {
         if (specialTypeOfCard.equals(ACE)) {
             return ("A" + this.suit);
 
-        } else if (specialTypeOfCard.equals(JACK)) {
+/*        } else if (specialTypeOfCard.equals(JACK)) {
             return ("J" + this.suit);
 
         } else if (specialTypeOfCard.equals(QUEEN)) {
             return ("Q" + this.suit);
 
         } else if (specialTypeOfCard.equals(KING)) {
-            return ("K" + this.suit);
+            return ("K" + this.suit);*/
         }
 
-        return (this.value + "" + this.suit);
-
-
+        return (this.value + " of " + this.suit);
     }
 
     public boolean isAce() {
