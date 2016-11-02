@@ -43,7 +43,6 @@ public class Deck {
         int cardsLeft = this.cards.size();
         int cardpick = rng.nextInt(cardsLeft);
         return cards.remove(cardpick);   //delete this card so it is not drawn again
-
     }
 }
 /*
