@@ -53,12 +53,15 @@ public class PlayerManager {
     public void getRound(){
 // 1. PlayerOne plays a card
 // 2. Each other player tries to match the suit with as high a card as possible.
-// 3. This mmethod compares those cards to PlayerOne's card.
+// 3. This method compares those cards to PlayerOne's card.
 // 4. Gives players who matched the suit points for their cards.
 // 5. Figure out who PlayerOne is now.
 // 6. Sets new playerOne to True, Switches old to false.
        for (Player p : players){
-           if (p.isPlayerOne){
+           //checking for playerone and if they're human.
+           //since instanceof human, play a card.
+           if (p.isPlayerOne && p instanceof HumanPlayer){
+               Card playedCard = p.humanSelectCardToPlay();
 
            }
        }

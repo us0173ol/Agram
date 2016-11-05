@@ -62,6 +62,15 @@ public abstract class Player {
         return wins;
     }
 
+    public Card humanSelectCardToPlay() {
+        handOfCards.displayHand();
+        String prompt = "Pleaes select a card to play.";
+        int userChoice = Game.ui.numInput(prompt);
+        Card selectedCard = handOfCards.getSingleCard(userChoice);
+        //Returns a card to PlayerManager.TODO Add this card to the pile of played cards.
+        return handOfCards.getSingleCard(userChoice);
+
+    }
 
     @Override
     public String toString() {
