@@ -22,8 +22,11 @@ public class Deck {
 
             for (int v = 1; v <= 10; v++) {//This used to iterate to 13.
                 if (v == 1) {
-                    Card c = new Card(v, suit, Card.ACE);
-                    cards.add(c);
+                    if (suit == Card.Suit.SPADES){
+                        continue;
+                    }
+                    else {Card c = new Card(v, suit, Card.ACE);
+                    cards.add(c);}
                 }else {Card c = new Card(v, suit, Card.NOT_ACE);
                     cards.add(c);
                 //I removed the face cards.
