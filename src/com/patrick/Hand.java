@@ -19,6 +19,12 @@ public class Hand {
         }
     }
 
+    public LinkedList<Card> getHandOfCards() {
+        return handOfCards;
+    }
+    public Card getSingleCard(int v){
+        return this.handOfCards.get(v);
+    }
 
     public int size() {
         return handOfCards.size();
@@ -46,5 +52,11 @@ public class Hand {
         }
         return cards;
 
+    }
+    public void displayHand() {
+        System.out.println(".............Your_Hand........ ");
+        for (int v = 0; v <= handOfCards.size(); v++) {
+            System.out.format("%d) %s", v+1, this.handOfCards.get(v));
+        }
     }
 }

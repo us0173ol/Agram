@@ -13,11 +13,22 @@ public class UI {
         return stringScanner.nextLine();
     }
 
-
     public String input(String prompt) {
         output(prompt);
         return stringScanner.nextLine();
     }
+    public void numOutput(String output){
+        System.out.println(output);
+    }
+    public int numInput(){
+        return numberScanner.nextInt();
+    }
+    public int numInput(String prompt){
+        numOutput(prompt);
+        return numberScanner.nextInt();
+    }
+
+
 
     // Can add a doubleInput, if needed. Some validation would be useful
     // but this method isn't used in this program. See other programs for validator classes.
