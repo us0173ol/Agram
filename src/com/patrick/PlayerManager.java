@@ -4,17 +4,17 @@ import java.util.LinkedList;
 public class PlayerManager {
     LinkedList<Player> players;
 
-    public final int MAX_PLAYERS = 10; //for a single deck, anyway, to allow for a possible max of 5 cards per player
+    public final int MAX_PLAYERS = 5; //for a single deck, anyway, to allow for a possible max of 5 cards per player
 
     public PlayerManager(LinkedList<Player> players) {
         this.players = players;
 
-        //only take the first 10 players
+        //only take the first 5 players
         while (players.size() > MAX_PLAYERS) {
-            System.out.println("More than 10 players, removing players from end of list");
+            System.out.println("More than 5 players, removing players from end of list");
             System.out.println(players.removeLast().getName());
         }
-        setDealer();
+        //setDealer();
     }
 
     public PlayerManager() {
@@ -23,18 +23,18 @@ public class PlayerManager {
 
 
     public void add(Player player) {
-        //refuse to add more than 10 players
+        //refuse to add more than 5 players
         if (players.size() < MAX_PLAYERS) {
             player.setManager(this);
             players.add(player);
-            setDealer();
+            //setDealer();
         } else {
             Game.ui.output("There's already " + MAX_PLAYERS + " in the game. Can't add " + player.getName());
         }
     }
 
-
-	/* Methods to manage which player is the dealer */
+/*
+	*//* Methods to manage which player is the dealer *//*
 
     private void setDealer() {
 
@@ -55,7 +55,7 @@ public class PlayerManager {
             }
         }
         return null;
-    }
+    }*/
 
     /* Enable all players to have a chance at being the dealer, in turn */
     public void rotateDealer() {
@@ -64,7 +64,7 @@ public class PlayerManager {
         lastDealer.setDealer(false);
         players.addFirst(lastDealer);              //add them at the beginning.
         //set last player to be dealer
-        setDealer();
+        //setDealer();
     }
 
 
