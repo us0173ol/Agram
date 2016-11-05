@@ -2,11 +2,20 @@ package com.patrick;
 
 public abstract class Player {
     int wins = 0;
+
+    public int getCurrentScore() {//Alt insert generate getter and setter.
+        return currentScore;
+    }
+
+    public void setCurrentScore(int currentScore) {//Alt insert generate getter and setter.
+        this.currentScore = currentScore;
+    }
+
+    int currentScore = 0;
     String name;
     Hand handOfCards;
     PlayerManager manager;
-    boolean hasPlayed = false;   //Has played this round
-    boolean isDealer = false;
+    boolean isPlayerOne = false;
 
     Player(String name) {
         this.name = name;
@@ -18,13 +27,21 @@ public abstract class Player {
     }
 
     //Insist that subclasses implement this method.
-    public abstract void playHand(Deck allCards);
+    //public abstract void playHand(Deck allCards);
+
+    public boolean isPlayerOne() {
+        return isPlayerOne;
+    }
+
+    public void setPlayerOne(boolean playerOne) {
+        isPlayerOne = playerOne;
+    }
 
     public void wonRound() {
         wins += 1;
     }
 
-    //Getters and setters...
+    //Getters and setters.
     public void setManager(PlayerManager manager) {
         this.manager = manager;
     }
@@ -45,21 +62,10 @@ public abstract class Player {
         return wins;
     }
 
-    public boolean isDealer() {
-        return isDealer;
-    }
-
-    public void setDealer(boolean isDealer) {
-        this.isDealer = isDealer;
-    }
-
-    public void setHasPlayed(boolean hasPlayed) {
-        this.hasPlayed = hasPlayed;
-    }
 
     @Override
     public String toString() {
-        String dealer = (isDealer) ? "* is current dealer *" : "(is not dealer)";
-        return name + " " + dealer;
+        String playerOne = (isPlayerOne) ? "* is currently Player One" : "(is not Player One)";
+        return name + " " + playerOne;
     }
 }

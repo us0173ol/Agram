@@ -3,6 +3,7 @@ package com.patrick;
 import java.util.LinkedList;
 public class PlayerManager {
     LinkedList<Player> players;
+    LinkedList<Card> cardsThatWereAlreadyPlayedThisRound;
 
     public final int MAX_PLAYERS = 5; //for a single deck, anyway, to allow for a possible max of 5 cards per player
 
@@ -19,6 +20,7 @@ public class PlayerManager {
 
     public PlayerManager() {
         this.players = new LinkedList<Player>();
+        this.cardsThatWereAlreadyPlayedThisRound = new LinkedList<Card>();
     }
 
 
@@ -34,31 +36,8 @@ public class PlayerManager {
     }
 
 /*
-	*//* Methods to manage which player is the dealer *//*
-
-    private void setDealer() {
-
-        //Clear being the dealer from everyone else
-        for (Player p : players) {
-            p.setDealer(false);
-        }
-
-        //Make the last player in the list the dealer
-        players.getLast().setDealer(true);
-    }
-
-
-    public Player getDealer() {
-        for (Player p : players) {
-            if (p.isDealer()) {
-                return p;
-            }
-        }
-        return null;
-    }*/
-
     /* Enable all players to have a chance at being the dealer, in turn */
-    public void rotateDealer() {
+    /*public void rotateDealer() {
 
         Player lastDealer = players.removeLast();  //remove last player,
         lastDealer.setDealer(false);
@@ -68,53 +47,21 @@ public class PlayerManager {
     }
 
 
-	/* Methods used by Players to figure out status of the game,
-	e.g. how many players left to play, what's the score to beat etc.*/
+	*//* Methods used by Players to figure out status of the game,
+	e.g. how many players left to play, what's the score to beat etc.*//*
+    }*/
+    public void getRound(){
+// 1. PlayerOne plays a card
+// 2. Each other player tries to match the suit with as high a card as possible.
+// 3. This mmethod compares those cards to PlayerOne's card.
+// 4. Gives players who matched the suit points for their cards.
+// 5. Figure out who PlayerOne is now.
+// 6. Sets new playerOne to True, Switches old to false.
+       for (Player p : players){
+           if (p.isPlayerOne){
 
-    public int getPlayersLeftToPlay() {
-
-        //Count all Players with hasPlayed == false
-        int playersLeft = 0;
-
-        for (Player p : players) {
-            if (!p.hasPlayed) {
-                playersLeft++;
-            }
-        }
-
-        return playersLeft;
-
-    }
-
-
-    //Out of the Players who have played, what's the highest score?
-    public int getMaxScore() {
-
-        int max = 0;
-        for (Player p : players) {
-            if (p.hasPlayed) {
-                int score = p.getHandOfCards().getScoreClosestTo21();
-                if (score > max) {
-                    max = score;
-                }
-            }
-        }
-        return max;
-    }
-
-    //Check if everyone is bust (except for the current player)
-    public boolean everyoneElseBust(Player exceptThisPlayer) {
-
-        LinkedList<Player> theOtherPlayers = (LinkedList) (players.clone());
-        theOtherPlayers.remove(exceptThisPlayer);
-
-        for (Player p : theOtherPlayers) {
-            if (!p.getHandOfCards().isBust()) {
-                return false;
-            }
-        }
-
-        return true;
+           }
+       }
     }
 
 
@@ -123,6 +70,13 @@ public class PlayerManager {
         for (Player p : players) {
             int wins = p.getWins();
             System.out.println(p.getName() + " won " + wins + " times");
+        }
+    }
+
+    public void printPlayerScores(){
+        for (Player p : players){
+            int score = p.getCurrentScore();
+            System.out.format("| Player: %s      Score:  %d |", p.getName(), score);
         }
     }
 
