@@ -7,11 +7,9 @@ public class Hand {
     public Hand() {
         this.handOfCards = new LinkedList<Card>();
     }
-    public void playCard(int cardNumber){
-
-
+    public Card playCard(int cardNumber){
+        return handOfCards.remove(cardNumber);
     }
-
     public void addCard(Card newCard) {
 
         if (this.handOfCards.size() < Game.MAX_CARDS_IN_HAND) {
