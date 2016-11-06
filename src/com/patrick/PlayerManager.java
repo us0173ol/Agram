@@ -62,7 +62,7 @@ public class PlayerManager {
            //since instanceof human, play a card.
            if (p.isPlayerOne && p instanceof HumanPlayer){
                Card playedCard = p.humanSelectCardToPlay();
-
+//github test
            }
        }
     }
