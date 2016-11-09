@@ -62,7 +62,17 @@ public class PlayerManager {
            //since instanceof human, play a card.
            if (p.isPlayerOne && p instanceof HumanPlayer){
                Card playedCard = p.humanSelectCardToPlay();
-//github test
+               playedCard.setAlpha(true);
+               cardsThatWereAlreadyPlayedThisRound.add(playedCard);
+
+           }
+           if(!p.isPlayerOne && p instanceof HumanPlayer){
+               Card playedCard = p.humanSelectCardToPlay();
+               cardsThatWereAlreadyPlayedThisRound.add(playedCard);
+           }
+           else {
+               System.out.println("Computer's place/turn.");
+               //TODO: this is where the computer turn should go.
            }
        }
     }
@@ -102,42 +112,24 @@ public class PlayerManager {
 
     }
 
-    //TODO with two equal high scores, the dealer is the winner
-    //TODO otherwise a hand with 5 cards is the winner
-    //TODO how else should ties be decided?
+    public Player determineTrickWinner() {
+        int counter =0;
+        //set alpha card so we can compare to other cards easily.
+        Card alpha_card = cardsThatWereAlreadyPlayedThisRound.removeFirst();
+        int maxScore = alpha_card.getValue();
+        //check cards
+        Player winner = players.get(0);
+        for (Card c : cardsThatWereAlreadyPlayedThisRound){
+            counter ++;
 
-    public Player determineRoundWinner() {
-
-        boolean everyoneBust = true;
-
-        int maxScore = 0;
-
-        Player winner = players.get(0);  //Assume first player is winner.. unless someone else is
-
-        for (Player p : players) {
-            //If there is a tie, the dealer wins
-            //The dealer is the LAST players in allPlayers
-            //So if we use >= then the dealer's will overwrite the other player
-            //TODO make better use of isDealer flag
-
-            int playerScore = p.getHandOfCards().getScoreClosestTo21();
-
-            if (playerScore > 0) {
-                //This player did not go bust
-                everyoneBust = false;
+            if (c.getSuit()== alpha_card.getSuit()){
+                if (c.getValue() > alpha_card.getValue()){
+                    winner = players.get(counter);
+                    maxScore = c.getValue();
+                }
             }
-
-            if (playerScore >= maxScore) {
-                maxScore = playerScore;
-                winner = p;
-            }
-
         }
-
-        if (everyoneBust) {
-            return null;
-        }
-
+        winner.setCurrentScore(maxScore);
         return winner;
 
     }
