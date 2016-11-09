@@ -1,4 +1,7 @@
 package com.patrick;
+//Adds players.
+//Determines trick structure.
+//Prints trick winner.
 
 import java.util.LinkedList;
 public class PlayerManager {
@@ -50,7 +53,7 @@ public class PlayerManager {
 	*//* Methods used by Players to figure out status of the game,
 	e.g. how many players left to play, what's the score to beat etc.*//*
     }*/
-    public void getRound(){
+    public void oneTrick(){
 // 1. PlayerOne plays a card
 // 2. Each other player tries to match the suit with as high a card as possible.
 // 3. This method compares those cards to PlayerOne's card.
@@ -75,15 +78,33 @@ public class PlayerManager {
                //TODO: this is where the computer turn should go.
            }
        }
+        Player trick_winner = determineTrickWinner();
+        setPlayers(trick_winner);
+        cardsThatWereAlreadyPlayedThisRound.clear();//Creates Empty list.  Next round starts cleanly.
+    }
+    public void setPlayers(Player trick_winner){
+        //remove winner.
+        players.remove(trick_winner);
+        //add winner as first.
+        players.addFirst(trick_winner);
+        //shift all players down one.
+        //TODO: reorder so the circle remains intact.
+        for (Player p : players){
+            p.setPlayerOne(false);
+        }
+        players.getFirst().setPlayerOne(true);
     }
 
 
     public void printWins() {
-
+        //TODO: make this the player with the highest score.
         for (Player p : players) {
             int wins = p.getWins();
             System.out.println(p.getName() + " won " + wins + " times");
         }
+    }
+    public void printTrickWinner(Player trickWinner){
+        System.out.format("%s is the winner and has %d points",trickWinner.getName(),trickWinner.getCurrentScore());
     }
 
     public void printPlayerScores(){
@@ -130,7 +151,9 @@ public class PlayerManager {
             }
         }
         winner.setCurrentScore(maxScore);
+        printTrickWinner(winner);
         return winner;
+
 
     }
 
