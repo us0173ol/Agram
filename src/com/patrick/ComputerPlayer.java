@@ -7,21 +7,6 @@ public class ComputerPlayer extends Player {
 
     public final int SENSIBLE_TARGET = 17;
 
-	/*
-	* Three cases:
-	*
-	* There are other players left to play
-	* 	- Take cards until score is higher than (Max of other players OR 17, whichever is larger)
-	*
-	* This player is the last player to play and everyone else is bust
-	*   - Win by default. Don't play.
-	*
-	* This player is the last player to play and at least one other player is still in the game
-	* 	- Play until sensible target, stop at 17 (or if goes bust)
-	*
-	*/
-
-
     public void playHand(Deck cards) {
 
         Game.ui.output(name + " has " + handOfCards + " ( totals " + handOfCards.getScoreClosestTo21() + " )");

@@ -4,7 +4,19 @@ public class Card {
     Suit suit;
     int value;
     String specialTypeOfCard;
-//Agram doesn't use the Ace of Spades or any face cards.
+    boolean alpha = false;
+
+    public boolean isAlpha() {
+        return alpha;
+    }
+
+    public void setAlpha(boolean alpha) {
+        this.alpha = alpha;
+    }
+
+
+
+    //Agram doesn't use the Ace of Spades or any face cards.
     public final static String NOT_ACE = "not a face card";
     public final static String ACE = "ace";
     /*public final static String JACK = "jack";
@@ -47,11 +59,8 @@ public class Card {
         this.suit = suit;
     }
 
-    public int getMinValue() {
-        return value;
-    }
 
-    public int getMaxValue() {
+    public int getValue() {
         if (this.specialTypeOfCard.equals(ACE)) {
             return 11;
         } else {

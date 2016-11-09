@@ -1,4 +1,12 @@
 package com.patrick;
+/*
+    THE PACK
+    The kings, queens, jacks, the 2s of all suits and the ace of
+    spades are removed from the deck. The cards of each suit rank,
+    from high to low: A, 10, 9, 8, 7, 6, 5, 4, 3. Because the ace of
+    spades (called "Chief"') is removed from the deck, the highest card
+    in the spade suit is the 10.
+*/
 
 import java.util.Scanner;
 public class UI {
@@ -27,16 +35,6 @@ public class UI {
         numOutput(prompt);
         return numberScanner.nextInt();
     }
-
-
-
-    // Can add a doubleInput, if needed. Some validation would be useful
-    // but this method isn't used in this program. See other programs for validator classes.
-    /*
-    public int intInput() {
-        return numberScanner.nextInt();
-    }
-    */
 
     public static void close() {
         numberScanner.close();
