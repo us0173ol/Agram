@@ -1,10 +1,12 @@
 package com.patrick;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
 
 public class Deck {
-    private LinkedList<Card> cards;
+    public LinkedList<Card> cards;
 
     protected Random rng;
 
@@ -34,6 +36,7 @@ public class Deck {
                 }
             }
         }
+        this.shuffle_deck();//Deck will always be shuffled.
 
     }
 
@@ -41,11 +44,13 @@ public class Deck {
         return cards.size();
     }
 
-    public Card deal() {
+    public void shuffle_deck(){
+        //Take the cards after they are made and shuffle them.
+        Collections.shuffle(this.cards);
+    }
 
-        int cardsLeft = this.cards.size();
-        int cardpick = rng.nextInt(cardsLeft);
-        return cards.remove(cardpick);   //delete this card so it is not drawn again
+    public Card deal() {
+        return cards.pop();   //delete this card so it is not drawn again
     }
 }
 /*

@@ -7,6 +7,8 @@ import java.util.LinkedList;
 public class PlayerManager {
     LinkedList<Player> players;
     LinkedList<Card> cardsThatWereAlreadyPlayedThisRound;
+    Deck deck = new Deck();
+    final static int MAX_CARDS_IN_HAND = 6; //Variable in Hand & Player.
 
     public final int MAX_PLAYERS = 5; //for a single deck, anyway, to allow for a possible max of 5 cards per player
 
@@ -38,22 +40,8 @@ public class PlayerManager {
         }
     }
 
-/*
-    /* Enable all players to have a chance at being the dealer, in turn */
-    /*public void rotateDealer() {
-
-        Player lastDealer = players.removeLast();  //remove last player,
-        lastDealer.setDealer(false);
-        players.addFirst(lastDealer);              //add them at the beginning.
-        //set last player to be dealer
-        //setDealer();
-    }
-
-
-	*//* Methods used by Players to figure out status of the game,
-	e.g. how many players left to play, what's the score to beat etc.*//*
-    }*/
     public void oneTrick(){
+        players.get(0).setPlayerOne(true);
 // 1. PlayerOne plays a card
 // 2. Each other player tries to match the suit with as high a card as possible.
 // 3. This method compares those cards to PlayerOne's card.
@@ -70,6 +58,7 @@ public class PlayerManager {
 
            }
            if(!p.isPlayerOne && p instanceof HumanPlayer){
+               System.out.print("Player One Played : " + cardsThatWereAlreadyPlayedThisRound.get(0) + "\n");
                Card playedCard = p.humanSelectCardToPlay();
                cardsThatWereAlreadyPlayedThisRound.add(playedCard);
            }
@@ -80,8 +69,11 @@ public class PlayerManager {
        }
         Player trick_winner = determineTrickWinner();
         setPlayers(trick_winner);
+        //Put cards back in the deck.
+        deck.cards.addAll(cardsThatWereAlreadyPlayedThisRound);
         cardsThatWereAlreadyPlayedThisRound.clear();//Creates Empty list.  Next round starts cleanly.
-    }
+        }
+
     public void setPlayers(Player trick_winner){
         //remove winner.
         players.remove(trick_winner);
@@ -93,6 +85,16 @@ public class PlayerManager {
             p.setPlayerOne(false);
         }
         players.getFirst().setPlayerOne(true);
+    }
+    public void dealHands(){
+        //For the number of cards a player is dealt
+        for (int i = 0; i < 6; i ++){
+            //Deal one card to each player.
+            for (Player p : players){
+                Card dealtCard = deck.deal();
+                p.handOfCards.addCard(dealtCard);
+            }
+        }
     }
 
 

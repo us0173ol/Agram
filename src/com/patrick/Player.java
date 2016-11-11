@@ -13,7 +13,7 @@ public abstract class Player {
 
     int currentScore = 0;
     String name;
-    Hand handOfCards;
+    Hand handOfCards = new Hand();
     PlayerManager manager;
     boolean isPlayerOne = false;
 
@@ -66,9 +66,9 @@ public abstract class Player {
         handOfCards.displayHand();
         String prompt = "Pleaes select a card to play.";
         int userChoice = Game.ui.numInput(prompt);
-        Card selectedCard = handOfCards.getSingleCard(userChoice);
+        Card selectedCard = handOfCards.playCard(userChoice);
         //Returns a card to PlayerManager.TODO Add this card to the pile of played cards.
-        return handOfCards.getSingleCard(userChoice);
+        return selectedCard;
 
     }
 

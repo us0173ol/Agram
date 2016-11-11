@@ -1,29 +1,23 @@
 package com.patrick;
 import java.util.LinkedList;
 public class Hand {
+
     private LinkedList<Card> handOfCards;
-
-
     public Hand() {
         this.handOfCards = new LinkedList<Card>();
     }
     public Card playCard(int cardNumber){
-        return handOfCards.remove(cardNumber);
+        return handOfCards.remove(cardNumber-1);
     }
     public void addCard(Card newCard) {
-
-        if (this.handOfCards.size() < Game.MAX_CARDS_IN_HAND) {
-            handOfCards.add(newCard);
-        } else {
-            Game.ui.output("Can't have more than " + Game.MAX_CARDS_IN_HAND + " cards!");
-        }
+        handOfCards.add(newCard);
     }
 
     public LinkedList<Card> getHandOfCards() {
         return handOfCards;
     }
     public Card getSingleCard(int v){
-        return this.handOfCards.get(v);
+        return this.handOfCards.get(v-1);
     }
 
     public int size() {
@@ -54,9 +48,9 @@ public class Hand {
 
     }
     public void displayHand() {
-        System.out.println(".............Your_Hand........ ");
-        for (int v = 0; v <= handOfCards.size(); v++) {
-            System.out.format("%d) %s", v+1, this.handOfCards.get(v));
+        System.out.println("_____Your_Hand_____ ");
+        for (int v = 0; v < handOfCards.size(); v++) {
+            System.out.format("|%d) %s\t\n", v+1, this.handOfCards.get(v));
         }
     }
 }

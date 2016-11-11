@@ -78,16 +78,7 @@ public class Card {
     public String toString() {
 
         if (specialTypeOfCard.equals(ACE)) {
-            return ("A" + this.suit);
-
-/*        } else if (specialTypeOfCard.equals(JACK)) {
-            return ("J" + this.suit);
-
-        } else if (specialTypeOfCard.equals(QUEEN)) {
-            return ("Q" + this.suit);
-
-        } else if (specialTypeOfCard.equals(KING)) {
-            return ("K" + this.suit);*/
+            return ("Ace of " + this.suit);
         }
 
         return (this.value + " of " + this.suit);
