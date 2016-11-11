@@ -71,8 +71,11 @@ public class Game {
             }
 
                 anotherRound = ui.input("Another hand? n to quit, anything else to continue... ");
-
                 playAgain = !anotherRound.equals("n");   // another.equals("n") returns a boolean
+            //If the players want to play more then reset the trick number.
+            if (playAgain){
+                    current_trick = 0;
+                }
 
             //rotate the dealer, so everyone gets turns to be the dealer.
 

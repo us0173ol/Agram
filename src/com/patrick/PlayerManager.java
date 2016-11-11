@@ -72,6 +72,7 @@ public class PlayerManager {
         //Put cards back in the deck.
         deck.cards.addAll(cardsThatWereAlreadyPlayedThisRound);
         cardsThatWereAlreadyPlayedThisRound.clear();//Creates Empty list.  Next round starts cleanly.
+        printPlayerScores();
         }
 
     public void setPlayers(Player trick_winner){
@@ -106,13 +107,13 @@ public class PlayerManager {
         }
     }
     public void printTrickWinner(Player trickWinner){
-        System.out.format("%s is the winner and has %d points",trickWinner.getName(),trickWinner.getCurrentScore());
+        System.out.format("%s is the winner and has %d points\n",trickWinner.getName(),trickWinner.getCurrentScore());
     }
 
     public void printPlayerScores(){
         for (Player p : players){
             int score = p.getCurrentScore();
-            System.out.format("| Player: %s      Score:  %d |", p.getName(), score);
+            System.out.format("| Player: %s      Score:  %d |\n", p.getName(), score);
         }
     }
 
@@ -153,6 +154,7 @@ public class PlayerManager {
             }
         }
         winner.setCurrentScore(maxScore);
+        cardsThatWereAlreadyPlayedThisRound.add(alpha_card);
         printTrickWinner(winner);
         return winner;
 
