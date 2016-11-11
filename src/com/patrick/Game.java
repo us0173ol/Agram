@@ -2,7 +2,7 @@ package com.patrick;
 
 public class Game {
     final static int MAX_CARDS_IN_HAND = 6; //variable in Hand and Player
-    final static int MAX_TRICKS = 6
+    final static int MAX_TRICKS = 6;
     int current_trick = 0;
 
     static UI ui;
@@ -31,7 +31,7 @@ public class Game {
         ui.input(number_of_players_prompt);
         //TODO: validate input for integers only and 2 to 5 players.
         int number_of_players = ui.numInput(number_of_players_prompt);
-        //for loop over 'number_of_pllayers' til we get to last player.
+        //for loop over 'number_of_pllayers' til it gets to last player.
         //in the loop each player gets a name from ui.input.
         //each player gets a name from player_name = ui.input(player_name_prompt) make a String player_name_prompt.
         //make humanplayer object.

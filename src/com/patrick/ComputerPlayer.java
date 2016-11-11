@@ -1,6 +1,9 @@
+/*
 package com.patrick;
 
 public class ComputerPlayer extends Player {
+
+    
     public ComputerPlayer(String name) {
         super(name);
     }
@@ -50,7 +53,8 @@ public class ComputerPlayer extends Player {
         }
 
 
-		/* Three cases:
+		*/
+/* Three cases:
 		*
 		* This player is the last player to play and everyone else is bust
 		*   - Win by default. Don't play.
@@ -61,7 +65,8 @@ public class ComputerPlayer extends Player {
 		* This player is the last player to play and at least one other player is still in the game
 		* 	- Play until sensible target, stop at 17 (or if goes bust)
 		*
-		*/
+		*//*
+
 
 
         // If there are other players left to play after this one
@@ -95,4 +100,4 @@ public class ComputerPlayer extends Player {
             }
         }
     }
-}
+}*/

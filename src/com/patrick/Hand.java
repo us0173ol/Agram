@@ -30,9 +30,9 @@ public class Hand {
         return handOfCards.size();
 
     }
-
+/*
     public int getMinimumScore() {
-
+        //TODO Ace is 11?
         //Assume ace is low.
         int s = 0;
 
@@ -44,7 +44,7 @@ public class Hand {
 
         return s;
 
-    }
+    }*/
     public String toString() {
         String cards = "";
         for (Card c : handOfCards) {
