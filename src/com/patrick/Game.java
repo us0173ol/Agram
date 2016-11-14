@@ -63,7 +63,7 @@ public class Game {
             while (current_trick < 6) {
                 //start trick from PlayerManager.
                 System.out.format("Trick Number : %d\n ", current_trick + 1);
-                playerManager.oneTrick();
+                playerManager.oneTrick(current_trick);
                 current_trick++;
                 playerManager.printWins();
             }

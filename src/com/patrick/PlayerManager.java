@@ -39,7 +39,7 @@ public class PlayerManager {
         }
     }
 
-    public void oneTrick(){
+    public void oneTrick(int currentTrick){
         players.get(0).setPlayerOne(true);
 // 1. PlayerOne plays a card
 // 2. Each other player tries to match the suit with as high a card as possible.
@@ -55,6 +55,7 @@ public class PlayerManager {
                playedCard.setAlpha(true);
                cardsThatWereAlreadyPlayedThisRound.add(playedCard);
 
+
            }
            if(!p.isPlayerOne && p instanceof HumanPlayer){
                System.out.print("Player One Played : " + cardsThatWereAlreadyPlayedThisRound.get(0) + "\n");
@@ -67,10 +68,13 @@ public class PlayerManager {
            }
        }
         Player trick_winner = determineTrickWinner();
-        setPlayers(trick_winner);
+        setPlayers(trick_winner);//set winner to deaoer.
         //Put cards back in the deck.
         deck.cards.addAll(cardsThatWereAlreadyPlayedThisRound);
         cardsThatWereAlreadyPlayedThisRound.clear();//Creates Empty list.  Next round starts cleanly.
+        if (currentTrick == 5){
+            trick_winner.setWins(1);
+        }
         printPlayerScores();
         }
 
@@ -111,25 +115,14 @@ public class PlayerManager {
     public void printPlayerScores(){
         for (Player p : players){
             int score = p.getCurrentScore();
-            System.out.format("| Player: %s      Score:  %d |\n", p.getName(), score);
+            //System.out.format("| Player: %s      Score:  %d |\n", p.getName(), score);
         }
     }
 
     public void printFinalWins() {
-
-        int mostWins = 0;
-        String winnerName = null;
-
-        for (Player p : players) {
-            int wins = p.getWins();
-            System.out.println(p.getName() + " won " + wins + " times");
-            if (wins > mostWins) {
-                mostWins = wins;
-                winnerName = p.getName();
-            }
-        }
-
-        Game.ui.output("The winner is " + winnerName);
+        //TODO: compare scores of previous games.
+        //TODO: handle ties.
+        Game.ui.output("The winner is " + players.get(0).getName());
 
     }
 

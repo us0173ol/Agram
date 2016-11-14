@@ -1,9 +1,18 @@
 package com.patrick;
 import java.util.LinkedList;
 public class Hand {
+    String owner;
 
     private LinkedList<Card> handOfCards;
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     public Hand() {
+        this.owner = "";
+
+
         this.handOfCards = new LinkedList<Card>();
     }
     public Card playCard(int cardNumber){
@@ -47,7 +56,7 @@ public class Hand {
 
     }
     public void displayHand() {
-        System.out.println("_____Your_Hand_____ ");
+        System.out.format("_____%s's_Hand_____\n", this.owner);
         for (int v = 0; v < handOfCards.size(); v++) {
             System.out.format("|%d) %s\t\n", v+1, this.handOfCards.get(v));
         }

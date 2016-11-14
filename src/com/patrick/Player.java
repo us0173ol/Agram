@@ -1,13 +1,15 @@
 package com.patrick;
 
 public abstract class Player {
+    public void setWins(int winsPoint) {
+        this.wins += winsPoint;
+    }
+
     int wins = 0;
 
     public int getCurrentScore() {//Alt insert generate getter and setter.
         return currentScore;
     }
-
-
 
     public void setCurrentScore(int currentScore) {//Alt insert generate getter and setter.
         this.currentScore += currentScore;
@@ -15,7 +17,9 @@ public abstract class Player {
 
     int currentScore = 0;
     String name;
+
     Hand handOfCards = new Hand();
+
     PlayerManager manager;
     boolean isPlayerOne = false;
 
@@ -24,8 +28,10 @@ public abstract class Player {
     }
 
     Player(String name, PlayerManager manager) {
+
         this.name = name;
         this.manager = manager;
+
     }
 
     //Insist that subclasses implement this method.
