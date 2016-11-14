@@ -41,8 +41,6 @@ public class Game {
     private void play() {
         //Create the player manager.
 
-
-
         boolean playAgain = true;
         String anotherRound;
         //TODO: make outer while loop for playing more games of Agram.
@@ -78,7 +76,6 @@ public class Game {
                 }
 
             //rotate the dealer, so everyone gets turns to be the dealer.
-
 
         }
 

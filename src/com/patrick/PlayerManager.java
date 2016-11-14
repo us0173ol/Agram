@@ -28,7 +28,6 @@ public class PlayerManager {
         this.cardsThatWereAlreadyPlayedThisRound = new LinkedList<Card>();
     }
 
-
     public void add(Player player) {
         //refuse to add more than 5 players
         if (players.size() < MAX_PLAYERS) {
@@ -98,7 +97,6 @@ public class PlayerManager {
         }
     }
 
-
     public void printWins() {
         //TODO: make this the player with the highest score.
         for (Player p : players) {
@@ -116,7 +114,6 @@ public class PlayerManager {
             System.out.format("| Player: %s      Score:  %d |\n", p.getName(), score);
         }
     }
-
 
     public void printFinalWins() {
 
@@ -157,8 +154,6 @@ public class PlayerManager {
         cardsThatWereAlreadyPlayedThisRound.add(alpha_card);
         printTrickWinner(winner);
         return winner;
-
-
     }
 
     public LinkedList<Player> getPlayersList() {

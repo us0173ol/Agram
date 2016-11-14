@@ -1,5 +1,5 @@
 package com.patrick;
-
+//Rules at the bottom.
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;

@@ -1,8 +1,9 @@
 package com.patrick;
 /*Credits for getting this Agram program working.
-        Clara's github
-        Malcolm Leehan
-        Mike Dodge
+        Clara James' Blackjack program is the base.
+        Malcolm Leehan.
+        Mike Dodge.
+        Mason Elmore.
         https://github.com/minneapolis-edu/Java2545examples/tree/master/src
         https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html*/
 

@@ -7,6 +7,8 @@ public abstract class Player {
         return currentScore;
     }
 
+
+
     public void setCurrentScore(int currentScore) {//Alt insert generate getter and setter.
         this.currentScore += currentScore;
     }

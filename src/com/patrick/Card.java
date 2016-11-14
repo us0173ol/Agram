@@ -14,12 +14,9 @@ public class Card {
         this.alpha = alpha;
     }
 
-
-
     //Agram doesn't use the Ace of Spades or any face cards.
     public final static String NOT_ACE = "not a face card";
     public final static String ACE = "ace";
-
 
     /*public final static String JACK = "jack";
     public final static String QUEEN = "queen";
@@ -34,7 +31,6 @@ public class Card {
             this.value = value;
         }
     }
-
 
     // specialTypeOfCard represents a card whose value is not the same as the face value
     // So Ace, J Q, and K
@@ -61,7 +57,6 @@ public class Card {
         this.suit = suit;
     }
 
-
     public int getValue() {
         if (this.specialTypeOfCard.equals(ACE)) {
             return 11;
@@ -69,7 +64,6 @@ public class Card {
             return this.value;
         }
     }
-
 
     public void setValue(int value) {
         this.value = value;
@@ -87,7 +81,6 @@ public class Card {
     public boolean isAce() {
         return this.specialTypeOfCard.equals(ACE);
     }
-
 
     @Override
     public boolean equals(Object other) {

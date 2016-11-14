@@ -37,7 +37,6 @@ public class Hand {
         }
 
         return s;
-
     }*/
     public String toString() {
         String cards = "";
