@@ -10,5 +10,6 @@ package com.patrick;
         https://www.tutorialspoint.com/java/java_collections.htm*/
 
 public class Testing {
+
     //This class was used to run different ideas before ruining the existing program.
 }
