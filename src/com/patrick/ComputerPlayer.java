@@ -1,13 +1,15 @@
-/*
+
 package com.patrick;
 
 public class ComputerPlayer extends Player {
 
-    
+
     public ComputerPlayer(String name) {
         super(name);
+        this.handOfCards.setOwner(this.name);
     }
-
+}
+/*
     public final int SENSIBLE_TARGET = 17;
 
     public void playHand(Deck cards) {

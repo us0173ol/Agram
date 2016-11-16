@@ -54,16 +54,31 @@ public class PlayerManager {
                Card playedCard = p.humanSelectCardToPlay();
                playedCard.setAlpha(true);
                cardsThatWereAlreadyPlayedThisRound.add(playedCard);
-
+               System.out.println(p.getName() + " played: "+ cardsThatWereAlreadyPlayedThisRound.get(0));
+               System.out.println("Current Trick"+cardsThatWereAlreadyPlayedThisRound);
 
            }
            if(!p.isPlayerOne && p instanceof HumanPlayer){
-               System.out.print("Player One Played : " + cardsThatWereAlreadyPlayedThisRound.get(0) + "\n");
                Card playedCard = p.humanSelectCardToPlay();
                cardsThatWereAlreadyPlayedThisRound.add(playedCard);
+               System.out.println(p.getName() + " played: "+ cardsThatWereAlreadyPlayedThisRound.get(0));
+               System.out.println("Current Trick"+cardsThatWereAlreadyPlayedThisRound);
            }
+           if (p.isPlayerOne && p instanceof ComputerPlayer){
+               Card playedCard = p.computerSelectCardToPlay();
+               cardsThatWereAlreadyPlayedThisRound.add(playedCard);
+               System.out.println(p.getName() + " played: " + cardsThatWereAlreadyPlayedThisRound.get(cardsThatWereAlreadyPlayedThisRound.size()-1)+ "\n");
+               System.out.println("Current Trick"+cardsThatWereAlreadyPlayedThisRound);
+           }
+           if (!p.isPlayerOne && p instanceof ComputerPlayer){
+               Card playedCard = p.computerSelectCardToPlay();
+               cardsThatWereAlreadyPlayedThisRound.add(playedCard);
+               System.out.println(p.getName() + " played: " + cardsThatWereAlreadyPlayedThisRound.get(cardsThatWereAlreadyPlayedThisRound.size()-1)+ "\n");
+               System.out.println("Current Trick"+cardsThatWereAlreadyPlayedThisRound);
+           }
+
            else {
-               System.out.println("Computer's place/turn.");
+               System.out.println("");
                //TODO: this is where the computer turn should go.
            }
        }
@@ -109,7 +124,7 @@ public class PlayerManager {
         }
     }
     public void printTrickWinner(Player trickWinner){
-        System.out.format("%s is the winner and has %d points\n",trickWinner.getName(),trickWinner.getCurrentScore());
+        System.out.format("%s wins the trick...\n",trickWinner.getName());
     }
 
     public void printPlayerScores(){
@@ -122,7 +137,7 @@ public class PlayerManager {
     public void printFinalWins() {
         //TODO: compare scores of previous games.
         //TODO: handle ties.
-        Game.ui.output("The winner is " + players.get(0).getName());
+        Game.ui.output( players.get(0).getName()+" wins AGRAM!!!");
 
     }
 
@@ -137,9 +152,10 @@ public class PlayerManager {
             counter ++;
 
             if (c.getSuit()== alpha_card.getSuit()){
-                if (c.getValue() > alpha_card.getValue()){
-                    winner = players.get(counter);
+                if (c.getValue() > maxScore){
                     maxScore = c.getValue();
+                    winner = players.get(counter);
+
                 }
             }
         }
